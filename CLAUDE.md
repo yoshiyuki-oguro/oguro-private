@@ -70,16 +70,16 @@
 チームで共有するドキュメントは、別のGitリポジトリで管理しています。
 このリポジトリ（個人プロジェクト）からClaude Codeを起動し、共有リポジトリのファイルを読み書きします。
 
-- **共有リポジトリのパス**: （例: ~/shared-project/）
+- **共有リポジトリのパス**: `C:\Users\bwd001.BWD\bwd group\claude code専用 - claudecode専用\bwd\`
 <!-- ↑ ローカルにcloneした共有リポジトリの絶対パスを記載してください -->
 
 ### 共有リポジトリの操作ルール
 
 共有リポジトリのファイルを編集するときは、必ず以下の手順で操作する:
 
-1. **編集前**: `git -C （共有リポジトリのパス） pull` を実行して最新版を取得する
+1. **編集前**: `git -C "C:\Users\bwd001.BWD\bwd group\claude code専用 - claudecode専用\bwd" pull` を実行して最新版を取得する
 2. **編集**: ファイルを変更する
-3. **編集後**: `git -C （共有リポジトリのパス） add` → `commit` → `push` で変更を共有する
+3. **編集後**: `git -C "C:\Users\bwd001.BWD\bwd group\claude code専用 - claudecode専用\bwd" add` → `commit` → `push` で変更を共有する
 
 この3ステップを1つの作業単位として必ずセットで実行する。
 `git pull` せずに編集を始めない。編集したら必ず `push` まで完了する。
