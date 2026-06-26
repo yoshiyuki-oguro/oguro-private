@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bwdグループOB会 設立趣意書（たたき台）</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #F5F3EE;
+    --surface:   #EDEAD3; /* 薄い和紙調 */
+    --ink:       #1A1713;
+    --ink-mid:   #4A4540;
+    --ink-light: #7A7268;
+    --blue:      #1D4E7A;
+    --blue-soft: #2A6099;
+    --brown:     #8A6C3F;
+    --rule:      #D0C9BC;
+    --rule-bold: #B5AC9E;
+    --accent-bg: #E8EFF6;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Yu Gothic UI", "游ゴシック体", YuGothic, "Hiragino Kaku Gothic Pro", "メイリオ", sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── ページ幅 ─────────────────────── */
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 48px 80px;
+  }
+
+  /* ── タイトルブロック ─────────────── */
+  .header {
+    text-align: center;
+    padding-bottom: 40px;
+    border-bottom: 2px solid var(--blue);
+    margin-bottom: 48px;
+  }
+
+  .header .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-family: "Yu Mincho", "游明朝", "YuMincho", "Hiragino Mincho Pro", "ＭＳ 明朝", serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-wrap: balance;
+    margin-bottom: 10px;
+  }
+
+  .header .subtitle {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    letter-spacing: 0.06em;
+  }
+
+  .header .draft-badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 3px 14px;
+    border: 1px solid var(--brown);
+    color: var(--brown);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    border-radius: 2px;
+  }
+
+  /* ── セクション共通 ───────────────── */
+  .section {
+    margin-bottom: 44px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .section-num {
+    font-family: "Yu Mincho", "游明朝", serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--blue);
+    background: var(--accent-bg);
+    padding: 2px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .section h2 {
+    font-family: "Yu Mincho", "游明朝", "YuMincho", "Hiragino Mincho Pro", "ＭＳ 明朝", serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.06em;
+    text-wrap: balance;
+  }
+
+  .divider {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── 本文テキスト ─────────────────── */
+  .body-text {
+    font-size: 0.93rem;
+    color: var(--ink-mid);
+    line-height: 1.9;
+    max-width: 66ch;
+  }
+
+  /* ── 条文リスト ───────────────────── */
+  .clause-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .clause-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 0.92rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+  }
+
+  .clause-num {
+    min-width: 2em;
+    font-variant-numeric: tabular-nums;
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding-top: 0.05em;
+  }
+
+  /* ── 注釈 ────────────────────────── */
+  .note {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #F0ECE2;
+    border-left: 3px solid var(--brown);
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  .note strong {
+    color: var(--brown);
+    font-weight: 600;
+  }
+
+  /* ── カード（会員種別） ───────────── */
+  .member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+    margin-top: 4px;
+  }
+
+  .member-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--blue);
+    padding: 18px 20px;
+    border-radius: 2px;
+  }
+
+  .member-card.brown-top {
+    border-top-color: var(--brown);
+  }
+
+  .member-card.light-top {
+    border-top-color: var(--rule-bold);
+  }
+
+  .member-card h3 {
+    font-family: "Yu Mincho", "游明朝", serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .member-card.brown-top h3 {
+    color: var(--brown);
+  }
+
+  .member-card.light-top h3 {
+    color: var(--ink-mid);
+  }
+
+  .member-card ul {
+    list-style: none;
+    font-size: 0.84rem;
+    color: var(--ink-mid);
+    line-height: 1.8;
+  }
+
+  .member-card ul li::before {
+    content: "・";
+    color: var(--ink-light);
+  }
+
+  /* ── 役員テーブル ─────────────────── */
+  .officer-table-wrap {
+    overflow-x: auto;
+  }
+
+  .officer-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+  }
+
+  .officer-table thead tr {
+    background: var(--blue);
+    color: white;
+  }
+
+  .officer-table thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 0.82rem;
+  }
+
+  .officer-table tbody tr:nth-child(even) {
+    background: #F0EDE6;
+  }
+
+  .officer-table tbody tr:nth-child(odd) {
+    background: white;
+  }
+
+  .officer-table td {
+    padding: 9px 14px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.65;
+  }
+
+  .officer-table td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* ── 会費テーブル ─────────────────── */
+  .fee-table-wrap {
+    overflow-x: auto;
+  }
+
+  .fee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-mid);
+  }
+
+  .fee-table thead tr {
+    background: var(--blue);
+    color: white;
+  }
+
+  .fee-table thead th {
+    padding: 9px 14px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 0.82rem;
+  }
+
+  .fee-table tbody tr:nth-child(even) { background: #F0EDE6; }
+  .fee-table tbody tr:nth-child(odd)  { background: white; }
+
+  .fee-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── フッター ─────────────────────── */
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ── 印刷対応 ─────────────────────── */
+  @media print {
+    body { background: white; }
+    .page { padding: 32px 32px 48px; }
+    .member-card { break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 32px 20px 56px; }
+    .header h1 { font-size: 1.5rem; }
+    .footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <div class="eyebrow">bwd Group Alumni Association</div>
+    <h1>bwdグループOB会<br>設立趣意書</h1>
+    <div class="subtitle">bwdホールディングス株式会社・グループ各社</div>
+    <div class="draft-badge">たたき台（第１稿）</div>
+  </div>
+
+  <!-- 1. 名称 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第１条</span>
+      <h2>名称</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="body-text">
+      本会は <strong>「bwdグループOB会」</strong>（以下「本会」）と称する。英語表記は
+      <em>bwd Group Alumni Association</em>（略称：bwd-AA）とする。
+    </p>
+    <div class="note"><strong>※ 検討事項：</strong> 名称・略称はグループブランドとの整合性を踏まえ、設立総会で正式決定する。</div>
+  </div>
+
+  <!-- 2. 目的 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第２条</span>
+      <h2>目的</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="body-text">
+      本会は、bwdグループ各社（以下「グループ各社」）に在籍した・在籍するすべての会員相互の親睦を深め、退職後も変わらぬ繋がりを保ちながら、互いの人生やキャリアを支え合うことを目的とする。あわせて、会員とbwdグループ現役社員の良好な関係を育み、グループ全体の持続的な成長に貢献する。
+    </p>
+  </div>
+
+  <!-- 3. 会員資格 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第３条</span>
+      <h2>会員の種別と資格</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="member-grid">
+      <div class="member-card">
+        <h3>正会員（OB・OG）</h3>
+        <ul>
+          <li>グループ各社に通算５年以上在籍して退職した方</li>
+          <li>定年退職の場合は在籍年数不問</li>
+          <li>雇用形態不問（正社員・契約社員等）</li>
+          <li>懲戒解雇・重大な服務規律違反による退職でない方</li>
+          <li>同業他社（別途定義）に転職・移籍していない方</li>
+        </ul>
+      </div>
+      <div class="member-card brown-top">
+        <h3>準会員（嘱託社員）</h3>
+        <ul>
+          <li>定年を迎えたのちも嘱託社員として在籍中の方</li>
+          <li>通算5年以上在籍していること</li>
+          <li>同業他社への移籍がないこと</li>
+          <li>退職後は正会員に自動移行（申請不要）</li>
+        </ul>
+      </div>
+      <div class="member-card light-top">
+        <h3>名誉会員</h3>
+        <ul>
+          <li>グループの発展に特に貢献した方</li>
+          <li>幹事会の推薦・決議により選出</li>
+          <li>会費免除</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:16px;">
+      <strong>「同業他社」の定義（案）：</strong> 国内外において、建材の卸売・販売、建設・設計・施工管理を主たる事業とし、bwdグループ各社と直接競合関係にある企業。具体的な対象企業リストは幹事会で別途定め、随時更新する。<br>
+      <strong>※ 検討事項：</strong> 転職後に同業他社を退職した場合の再入会可否、業態の境界線（隣接業種・独立開業等）の扱いを要整理。
+    </div>
+  </div>
+
+  <!-- 4. 入会・退会 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第４条</span>
+      <h2>入会・退会・除名</h2>
+      <div class="divider"></div>
+    </div>
+
+    <ul class="clause-list">
+      <li>
+        <span class="clause-num">（入会）</span>
+        <span>所定の入会申込書を提出し、幹事会が承認することで入会とする。入会金は設立総会で定める。</span>
+      </li>
+      <li>
+        <span class="clause-num">（退会）</span>
+        <span>本人からの退会届の提出により退会とする。納入済み会費は返還しない。</span>
+      </li>
+      <li>
+        <span class="clause-num">（資格喪失）</span>
+        <span>正会員が入会後に同業他社へ転職・移籍した場合は、入会資格を喪失し、自動退会とする。自ら申告することを原則とし、申告がない場合は幹事会が確認の上で通知する。</span>
+      </li>
+      <li>
+        <span class="clause-num">（除名）</span>
+        <span>本会の名誉を著しく傷つけた会員は、幹事会の決議により除名することができる。除名前に当該会員への弁明機会を設ける。</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. 活動内容 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第５条</span>
+      <h2>活動内容</h2>
+      <div class="divider"></div>
+    </div>
+
+    <ul class="clause-list">
+      <li>
+        <span class="clause-num">①</span>
+        <span><strong>定期総会・懇親会</strong>：年１回、会員の近況報告・意見交換および懇親を目的として開催する。</span>
+      </li>
+      <li>
+        <span class="clause-num">②</span>
+        <span><strong>各種交流イベント</strong>：ゴルフコンペ、食事会、見学会その他会員が希望するイベントを随時開催する。</span>
+      </li>
+      <li>
+        <span class="clause-num">③</span>
+        <span><strong>情報共有</strong>：会報・メールマガジン・SNSグループ等を通じて、グループおよび会員の近況を発信する。</span>
+      </li>
+      <li>
+        <span class="clause-num">④</span>
+        <span><strong>相互支援</strong>：会員相互のビジネス・キャリア・生活における相談や紹介に応じ合う。</span>
+      </li>
+      <li>
+        <span class="clause-num">⑤</span>
+        <span><strong>グループ連携</strong>：bwdグループへの協力（人材紹介・業務紹介等）について、双方の希望を踏まえた情報交換を行う。</span>
+      </li>
+      <li>
+        <span class="clause-num">⑥</span>
+        <span><strong>慶弔・福祉</strong>：会員の慶弔・慶事・災害に際し、別途定める慶弔規定に基づき対応する。</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 6. 組織・役員 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第６条</span>
+      <h2>組織・役員構成</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="officer-table-wrap">
+      <table class="officer-table">
+        <thead>
+          <tr>
+            <th>役職</th>
+            <th>人数（案）</th>
+            <th>役割・選出方法</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>名誉顧問</td>
+            <td>若干名</td>
+            <td>グループ代表取締役等が就任（設立総会で承認）</td>
+          </tr>
+          <tr>
+            <td>会長</td>
+            <td>１名</td>
+            <td>本会を代表し、会務を統括する。長期在籍OBから選出。</td>
+          </tr>
+          <tr>
+            <td>副会長</td>
+            <td>１〜２名</td>
+            <td>会長を補佐し、会長不在時に代行する。</td>
+          </tr>
+          <tr>
+            <td>幹事長</td>
+            <td>１名</td>
+            <td>幹事会を主宰し、会の実務を取りまとめる。</td>
+          </tr>
+          <tr>
+            <td>幹事</td>
+            <td>６〜１０名</td>
+            <td>グループ各社・入社年代のバランスを考慮して選出。イベント企画・会員管理等を担当。</td>
+          </tr>
+          <tr>
+            <td>会計</td>
+            <td>１名</td>
+            <td>会費の収支管理・決算報告。</td>
+          </tr>
+          <tr>
+            <td>監事</td>
+            <td>１〜２名</td>
+            <td>会計・運営の監査。幹事を兼任しない。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:14px;">
+      <strong>任期：</strong> 役員の任期は２年とし、再任を妨げない。<br>
+      <strong>事務局：</strong> 当面はグループ総務部門が事務局機能を担う（委託・外部化は規模拡大後に検討）。<br>
+      <strong>※ 検討事項：</strong> 役員の選出方法（互選・推薦・投票）を設立総会前に整理すること。
+    </div>
+  </div>
+
+  <!-- 7. 会費 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第７条</span>
+      <h2>会費</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="fee-table-wrap">
+      <table class="fee-table">
+        <thead>
+          <tr>
+            <th>会員種別</th>
+            <th>年会費（案）</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>正会員（OB・OG）</td>
+            <td>2,000円</td>
+            <td>設立初年度は半額等の特例も検討</td>
+          </tr>
+          <tr>
+            <td>準会員（嘱託）</td>
+            <td>2,000円</td>
+            <td>正会員と同額。退職後は正会員に自動移行のため金額も変わらず手続き不要。</td>
+          </tr>
+          <tr>
+            <td>名誉会員</td>
+            <td>無料</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:14px;">
+      <strong>※ 検討事項：</strong> 会費額はイベント規模・会員数・事務局コストを踏まえて設立総会で決定する。収支報告は毎年の定期総会で全会員に開示する。入会金の要否も合わせて議論すること。
+    </div>
+  </div>
+
+  <!-- 8. 個人情報 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第８条</span>
+      <h2>個人情報の取り扱い</h2>
+      <div class="divider"></div>
+    </div>
+
+    <ul class="clause-list">
+      <li>
+        <span class="clause-num">①</span>
+        <span>本会が収集する個人情報（氏名・連絡先・在籍歴等）は、会員名簿の管理・連絡・活動案内に限り使用し、第三者へ提供しない。</span>
+      </li>
+      <li>
+        <span class="clause-num">②</span>
+        <span>退会・除名後は、法令で定める保存期間を除き速やかに個人情報を削除する。</span>
+      </li>
+      <li>
+        <span class="clause-num">③</span>
+        <span>会員名簿は幹事のみが閲覧できる。会員間での名簿の共有は、本人の同意を得た範囲に限る。</span>
+      </li>
+      <li>
+        <span class="clause-num">④</span>
+        <span>個人情報の取り扱いについては、別途「個人情報管理規程」を定める。</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 9. 会則の改廃 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">第９条</span>
+      <h2>会則の改廃</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="body-text">
+      本会則の改廃は、定期総会または臨時総会において出席会員の３分の２以上の賛成をもって行う。
+      緊急を要する場合は、幹事会の全員一致の決議により暫定的に変更し、次回総会で承認を求めることができる。
+    </p>
+  </div>
+
+  <!-- 10. 附則 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">附則</span>
+      <h2>設立・施行</h2>
+      <div class="divider"></div>
+    </div>
+
+    <ul class="clause-list">
+      <li>
+        <span class="clause-num">１</span>
+        <span>本会則は、設立総会における承認の日より施行する。</span>
+      </li>
+      <li>
+        <span class="clause-num">２</span>
+        <span>設立当初の役員は、設立準備委員会の推薦に基づき、設立総会で選任する。</span>
+      </li>
+      <li>
+        <span class="clause-num">３</span>
+        <span>設立当初の会計年度は設立総会日から翌年３月末日までとする。</span>
+      </li>
+    </ul>
+
+    <div class="note" style="margin-top:14px;">
+      <strong>今後の検討課題：</strong><br>
+      ・設立総会の開催時期・形式（合わせて懇親会を開催するか）<br>
+      ・設立準備委員会の組成（誰が声がけするか、何社から選ぶか）<br>
+      ・「同業他社」対象リストの作成・更新ルール<br>
+      ・SNSグループ・連絡ツールの選定（LINE / メール等）<br>
+      ・グループ各社での社内周知・告知方法<br>
+      ・海外拠点（B&I Vietnam）在籍者の扱い（時差・言語・イベント参加形式）
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <div class="footer">
+    <span>bwdグループOB会 設立趣意書（たたき台 第１稿）</span>
+    <span>2026年6月　作成</span>
+  </div>
+
+</div>
+</body>
+</html>
