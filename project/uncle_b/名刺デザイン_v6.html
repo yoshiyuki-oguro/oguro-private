@@ -48,24 +48,14 @@
   .logo-small-wrap img { width:50px; height:50px; display:block; opacity:.88; }
   .note { font-size:10.5px; color:var(--muted); letter-spacing:.1em; text-align:center; }
 
-  /* 表面 v6: 白余白 + 内側オレンジ面 + 温故知新タグライン */
+  /* 表面 v6: 全面オレンジ + 温故知新タグライン */
   .card-front {
-    background: #fff;
-    position: relative;
+    background: var(--brand);
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .card-front::before {
-    content: '';
-    position: absolute;
-    inset: 16px;
-    background: var(--brand);
-    border-radius: 2px;
-  }
   .logo-wrap {
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +68,6 @@
     letter-spacing: .22em;
     font-weight: 400;
   }
-  /* 温故知新: 薄く・小さく・letter-spacing広め */
   .front-tagline {
     color: rgba(255,255,255,.38);
     font-size: 9.5px;
