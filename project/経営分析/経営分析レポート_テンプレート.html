@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>経営分析レポート</title>
+<link rel="stylesheet" href="https://assets.anthropic.com/styles/inter.css">
+<style>
+/* ============================================================
+   bwd group 経営分析レポート テンプレート
+   デザイン: 濃紺×グレーの端正な経営資料調
+   ------------------------------------------------------------
+   ★このファイルの編集はページ最下部の <script> 内 REPORT_DATA
+     だけを書き換えれば、表・KPI・見出しがすべて再描画されます。
+   ============================================================ */
+
+:root{
+  --navy:#15294d;         /* 基調カラー（濃紺） */
+  --navy-soft:#33456b;
+  --accent:#2f5c9e;       /* データバー・強調 */
+  --ink:#1c2330;          /* 本文 */
+  --muted:#6a7486;        /* 補助テキスト */
+  --faint:#98a1b1;
+  --line:#e3e6ec;         /* 罫線 */
+  --line-strong:#c9cfda;
+  --bg:#f5f6f9;           /* 背景 */
+  --card:#ffffff;
+  --bar:rgba(47,92,158,.13);
+  --pos:#1f7a53;
+  --neg:#b23c3c;
+  --shadow:0 1px 2px rgba(21,41,77,.04),0 8px 24px -12px rgba(21,41,77,.18);
+  --radius:11px;
+  --sans:'Inter',"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo",sans-serif;
+  --serif:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --navy:#c9d6ee; --navy-soft:#8ea3c8; --accent:#6f9fd8;
+    --ink:#e7ebf2; --muted:#9aa4b6; --faint:#6b7688;
+    --line:#283044; --line-strong:#374156;
+    --bg:#0e1420; --card:#161d2c; --bar:rgba(111,159,216,.18);
+    --pos:#57c08c; --neg:#e2807f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="light"]{
+  --navy:#15294d;--navy-soft:#33456b;--accent:#2f5c9e;--ink:#1c2330;--muted:#6a7486;
+  --faint:#98a1b1;--line:#e3e6ec;--line-strong:#c9cfda;--bg:#f5f6f9;--card:#fff;
+  --bar:rgba(47,92,158,.13);--pos:#1f7a53;--neg:#b23c3c;
+  --shadow:0 1px 2px rgba(21,41,77,.04),0 8px 24px -12px rgba(21,41,77,.18);
+}
+:root[data-theme="dark"]{
+  --navy:#c9d6ee;--navy-soft:#8ea3c8;--accent:#6f9fd8;--ink:#e7ebf2;--muted:#9aa4b6;
+  --faint:#6b7688;--line:#283044;--line-strong:#374156;--bg:#0e1420;--card:#161d2c;
+  --bar:rgba(111,159,216,.18);--pos:#57c08c;--neg:#e2807f;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);color:var(--ink);background:var(--bg);
+  line-height:1.6;font-feature-settings:"palt" 1;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.sheet{
+  max-width:1120px;margin:0 auto;padding:56px 40px 72px;
+}
+
+/* ---------- マストヘッド ---------- */
+.masthead{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  padding-bottom:18px;border-bottom:2px solid var(--navy);
+}
+.masthead::after{content:"";}
+.brand .kicker{
+  font-size:11px;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:6px;
+}
+.brand .company{
+  font-family:var(--serif);font-size:31px;font-weight:600;color:var(--navy);
+  letter-spacing:.02em;line-height:1.15;
+}
+.brand .company small{font-size:.62em;color:var(--muted);font-weight:400;margin-left:.5em;font-family:var(--sans);}
+.meta{text-align:right;font-size:12.5px;color:var(--muted);line-height:1.7;white-space:nowrap}
+.meta .classification{
+  display:inline-block;font-size:10.5px;letter-spacing:.14em;font-weight:600;
+  color:var(--navy);border:1px solid var(--line-strong);border-radius:4px;
+  padding:2px 8px;margin-bottom:8px;
+}
+.meta b{color:var(--ink);font-weight:600}
+
+/* ---------- レポートタイトル ---------- */
+.report-head{margin:34px 0 30px}
+.report-head h1{
+  font-family:var(--serif);font-size:26px;font-weight:600;color:var(--ink);
+  letter-spacing:.01em;line-height:1.3;
+}
+.report-head .period{
+  margin-top:8px;font-size:14px;color:var(--muted);
+  display:flex;align-items:center;gap:10px;
+}
+.report-head .period::before{
+  content:"";width:22px;height:2px;background:var(--accent);display:inline-block;
+}
+
+/* ---------- セクション見出し ---------- */
+.section{margin-top:44px}
+.section-title{
+  display:flex;align-items:baseline;gap:12px;margin-bottom:18px;
+}
+.section-title .idx{
+  font-size:11px;letter-spacing:.2em;color:var(--accent);font-weight:700;
+}
+.section-title h2{
+  font-size:16px;font-weight:600;color:var(--navy);letter-spacing:.03em;
+}
+.section-title .rule{flex:1;height:1px;background:var(--line)}
+
+/* ---------- KPIカード ---------- */
+.kpi-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;
+}
+.kpi{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.kpi::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:var(--navy);opacity:.85}
+.kpi .label{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.02em}
+.kpi .val{
+  margin-top:10px;font-size:29px;font-weight:600;color:var(--ink);
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em;line-height:1.1;
+}
+.kpi .val .unit{font-size:14px;color:var(--muted);font-weight:500;margin-left:4px}
+.kpi .sub{margin-top:6px;font-size:12px;color:var(--faint)}
+.kpi .sub.pos{color:var(--pos)} .kpi .sub.neg{color:var(--neg)}
+
+/* ---------- テーブル ---------- */
+.table-toolbar{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:12px;flex-wrap:wrap
+}
+.table-toolbar .hint{font-size:12px;color:var(--faint)}
+.filter{
+  position:relative;
+}
+.filter input{
+  font-family:var(--sans);font-size:13px;color:var(--ink);
+  border:1px solid var(--line-strong);border-radius:7px;padding:7px 12px 7px 30px;
+  background:var(--card);width:230px;transition:border-color .15s,box-shadow .15s;
+}
+.filter input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(47,92,158,.12)}
+.filter svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--faint)}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+thead th{
+  background:var(--card);color:var(--navy);font-weight:600;text-align:right;
+  padding:13px 16px;border-bottom:2px solid var(--navy);white-space:nowrap;
+  position:sticky;top:0;cursor:pointer;user-select:none;transition:background .12s;
+}
+thead th:hover{background:rgba(47,92,158,.05)}
+thead th.text,thead th.rank{text-align:left}
+thead th .u{display:block;font-size:10px;color:var(--muted);font-weight:500;margin-top:2px}
+thead th .arrow{color:var(--accent);font-size:10px;margin-left:4px;opacity:0}
+thead th.sorted .arrow{opacity:1}
+tbody td{
+  padding:11px 16px;border-bottom:1px solid var(--line);text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink);
+}
+tbody td.text{text-align:left;white-space:normal}
+tbody td.rank{text-align:left;color:var(--faint);font-size:12px;width:38px}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(47,92,158,.035)}
+.name-cell{display:flex;align-items:center;gap:8px}
+.name-cell .nm{font-weight:500}
+.badge{
+  font-size:9.5px;font-weight:700;letter-spacing:.05em;padding:1px 6px;border-radius:4px;
+  background:rgba(47,92,158,.1);color:var(--accent);border:1px solid rgba(47,92,158,.22);
+}
+tr.is-group td{background:rgba(47,92,158,.03)}
+tr.is-group .nm{color:var(--navy-soft)}
+
+/* セル内データバー */
+.barcell{position:relative}
+.barcell .fill{position:absolute;left:0;top:3px;bottom:3px;background:var(--bar);border-radius:0 3px 3px 0;z-index:0}
+.barcell .v{position:relative;z-index:1}
+td.dash{color:var(--faint)}
+
+/* 合計行 */
+tfoot td{
+  padding:13px 16px;text-align:right;font-variant-numeric:tabular-nums;
+  font-weight:700;color:var(--navy);border-top:2px solid var(--line-strong);
+  background:rgba(47,92,158,.04);white-space:nowrap;
+}
+tfoot td.text{text-align:left}
+
+/* ---------- 分析ポイント ---------- */
+.insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.insight{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:8px;padding:18px 20px;box-shadow:var(--shadow);
+}
+.insight h3{font-size:13.5px;color:var(--navy);font-weight:600;margin-bottom:8px}
+.insight ul{list-style:none}
+.insight li{font-size:13px;color:var(--ink);padding-left:15px;position:relative;margin-bottom:6px;line-height:1.55}
+.insight li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.insight li b{color:var(--navy);font-weight:600}
+
+/* ---------- 注記・フッター ---------- */
+.notes{margin-top:14px}
+.notes .section-title h2{font-size:14px}
+.notes ol{list-style:none;counter-reset:n}
+.notes li{
+  counter-increment:n;font-size:12px;color:var(--muted);line-height:1.6;
+  padding-left:24px;position:relative;margin-bottom:7px;
+}
+.notes li::before{
+  content:"※" counter(n);position:absolute;left:0;color:var(--accent);font-weight:600;font-size:11px;
+}
+footer{
+  margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  font-size:11.5px;color:var(--faint);
+}
+footer .mark{font-family:var(--serif);color:var(--navy-soft);letter-spacing:.08em;font-weight:600}
+
+/* ---------- 印刷 ---------- */
+@media print{
+  :root{--bg:#fff;--shadow:none}
+  body{background:#fff}
+  .sheet{padding:0;max-width:100%}
+  .table-toolbar .filter,.table-toolbar .hint{display:none}
+  .kpi,.insight,.table-wrap{box-shadow:none;break-inside:avoid}
+  thead th{position:static}
+  .section{margin-top:26px}
+  @page{margin:14mm}
+}
+@media (max-width:640px){
+  .sheet{padding:32px 18px 48px}
+  .masthead{flex-direction:column;align-items:flex-start;gap:14px}
+  .meta{text-align:left}
+  .brand .company{font-size:25px}
+  .report-head h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header class="masthead">
+    <div class="brand">
+      <div class="kicker" id="b-group">bwd group</div>
+      <div class="company" id="b-company"></div>
+    </div>
+    <div class="meta">
+      <div class="classification" id="m-class"></div>
+      <div id="m-period"></div>
+      <div id="m-prepared"></div>
+    </div>
+  </header>
+
+  <div class="report-head">
+    <h1 id="r-title"></h1>
+    <div class="period" id="r-sub"></div>
+  </div>
+
+  <!-- KPIサマリ -->
+  <section class="section" id="sec-kpi">
+    <div class="section-title"><span class="idx">01</span><h2 id="t-kpi">サマリ</h2><span class="rule"></span></div>
+    <div class="kpi-grid" id="kpi-grid"></div>
+  </section>
+
+  <!-- 明細テーブル -->
+  <section class="section" id="sec-table">
+    <div class="section-title"><span class="idx">02</span><h2 id="t-table"></h2><span class="rule"></span></div>
+    <div class="table-toolbar">
+      <div class="filter">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="filter" placeholder="仕入先名で絞り込み…" autocomplete="off">
+      </div>
+      <span class="hint">列見出しをクリックで並べ替え</span>
+    </div>
+    <div class="table-wrap">
+      <table id="tbl">
+        <thead><tr id="thead-row"></tr></thead>
+        <tbody id="tbody"></tbody>
+        <tfoot id="tfoot"></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- 分析ポイント -->
+  <section class="section" id="sec-insights">
+    <div class="section-title"><span class="idx">03</span><h2>分析ポイント</h2><span class="rule"></span></div>
+    <div class="insights" id="insights"></div>
+  </section>
+
+  <!-- 注記 -->
+  <section class="section notes" id="sec-notes">
+    <div class="section-title"><span class="idx">04</span><h2>算出方法・注記</h2><span class="rule"></span></div>
+    <ol id="notes"></ol>
+  </section>
+
+  <footer>
+    <span id="f-left"></span>
+    <span class="mark">bwd group</span>
+  </footer>
+</div>
+
+<script>
+/* ============================================================================
+   ▼▼▼ ここだけ書き換えてください（REPORT_DATA） ▼▼▼
+   - company        : 会社名（正式名称）
+   - reportTitle    : レポートの表題
+   - period         : 対象期間
+   - preparedBy/date: 作成部署・作成日
+   - classification : 右上の区分ラベル（例:「社外秘」空文字で非表示）
+   - summary[]      : KPIカード { label, value, unit, sub, tone:'pos'|'neg' }
+   - table.columns[]: 列定義 { key,label,unit,type:'text'|'num'|'percent',
+                              bar:true(バー表示), total:'sum'|['分子key','分母key'] }
+   - table.rows[]   : 行データ（各列 key に対応。group:true でグループ会社扱い）
+   - table.rankBy   : 既定の並べ替え・ランク付けに使う列 key
+   - insights[]     : { title, points:[ '…' ] }（<b>…</b> 可）
+   - notes[]        : 注記（文字列）
+   ============================================================================ */
+const REPORT_DATA = {
+  company: "ボンド商事株式会社",
+  companyNote: "bond",
+  reportTitle: "仕入先別 仕入・販売・粗利分析",
+  period: "2025年度（2025年4月 〜 2026年3月）",
+  preparedBy: "経営企画",
+  date: "2026-07-03",
+  classification: "社外秘",
+
+  summary: [
+    { label:"総仕入額",   value:6103294, unit:"千円" },
+    { label:"総販売額",   value:7200616, unit:"千円", sub:"税抜" },
+    { label:"総粗利",     value:1037557, unit:"千円" },
+    { label:"全社粗利率", value:14.41,   unit:"%", type:"percent" },
+  ],
+
+  table: {
+    title: "仕入先別リスト（仕入額の大きい順）",
+    rankBy: "shiire",
+    columns: [
+      { key:"name",   label:"仕入先",  type:"text" },
+      { key:"shiire", label:"仕入額",  unit:"千円", type:"num", bar:true, total:"sum" },
+      { key:"hanbai", label:"販売額",  unit:"千円", type:"num", total:"sum" },
+      { key:"arari",  label:"粗利",    unit:"千円", type:"num", total:"sum" },
+      { key:"ritsu",  label:"粗利率",  unit:"%",   type:"percent", total:["arari","hanbai"] },
+    ],
+    // hanbai/arari/ritsu が null の先は「仕入はあるが該当商品の主要仕入先が別会社に登録」ケース
+    rows: [
+      { name:"アイカ工業",                     shiire:1073265, hanbai:1267298, arari:198250, ritsu:15.64 },
+      { name:"コニシ",                         shiire:993341,  hanbai:1135343, arari:138385, ritsu:12.19 },
+      { name:"セメダイン",                     shiire:792972,  hanbai:908101,  arari:130145, ritsu:14.33 },
+      { name:"ウッド建材",  group:true,        shiire:287591,  hanbai:295170,  arari:34589,  ritsu:11.72 },
+      { name:"ヤヨイ化学",                     shiire:249835,  hanbai:309474,  arari:61696,  ritsu:19.94 },
+      { name:"積水マテリアルソリューションズ", shiire:245036,  hanbai:259994,  arari:14556,  ritsu:5.60 },
+      { name:"積水フーラー",                   shiire:199220,  hanbai:205203,  arari:6391,   ritsu:3.11 },
+      { name:"工機ホールディングス",           shiire:119839,  hanbai:123968,  arari:6894,   ritsu:5.56 },
+      { name:"新邦工業",                       shiire:101475,  hanbai:103293,  arari:1818,   ritsu:1.76 },
+      { name:"王子コンテナー",                 shiire:100691,  hanbai:103234,  arari:2043,   ritsu:1.98 },
+      { name:"アイエアーキュー",               shiire:93232,   hanbai:113800,  arari:19912,  ritsu:17.50 },
+      { name:"ロンシール工業",                 shiire:92053,   hanbai:82484,   arari:4273,   ritsu:5.18 },
+      { name:"日本ウイリング",                 shiire:87900,   hanbai:93262,   arari:5591,   ritsu:5.99 },
+      { name:"立川ブラインド工業",             shiire:76744,   hanbai:null,    arari:null,   ritsu:null },
+      { name:"コマックス",                     shiire:75670,   hanbai:105660,  arari:22637,  ritsu:21.42 },
+      { name:"bコーポレーション", group:true,  shiire:73383,   hanbai:null,    arari:null,   ritsu:null },
+      { name:"大日製罐",                       shiire:63969,   hanbai:69693,   arari:6497,   ritsu:9.32 },
+      { name:"APMジャパン",                    shiire:55936,   hanbai:89228,   arari:24125,  ritsu:27.04 },
+      { name:"KLASS",                          shiire:52496,   hanbai:64737,   arari:13114,  ritsu:20.26 },
+      { name:"エスパッケージ",                 shiire:48758,   hanbai:null,    arari:null,   ritsu:null },
+      { name:"シンコー",                       shiire:33726,   hanbai:54846,   arari:12908,  ritsu:23.53 },
+      { name:"サンライズ",                     shiire:31476,   hanbai:null,    arari:null,   ritsu:null },
+      { name:"MUマテックス",                   shiire:30210,   hanbai:12148,   arari:1628,   ritsu:13.40 },
+      { name:"野口興産",                       shiire:27334,   hanbai:94,      arari:11,     ritsu:11.66 },
+      { name:"THE ONLY ONE",                   shiire:27277,   hanbai:34706,   arari:8677,   ritsu:25.00 },
+      { name:"マキタ",                         shiire:25561,   hanbai:3122,    arari:396,    ritsu:12.69 },
+      { name:"高島",                           shiire:25440,   hanbai:25748,   arari:4801,   ritsu:18.65 },
+      { name:"ライトハウス名古屋金属工場",     shiire:24042,   hanbai:27780,   arari:3706,   ritsu:13.34 },
+      { name:"サンユインダストリアル",         shiire:21288,   hanbai:28540,   arari:6759,   ritsu:23.68 },
+      { name:"生田化研社",                     shiire:18482,   hanbai:26478,   arari:6312,   ritsu:23.84 },
+      { name:"シーカジャパン（ポゾリス）",     shiire:17701,   hanbai:4048,    arari:465,    ritsu:11.49 },
+      { name:"タキロンシーアイビル",           shiire:16928,   hanbai:null,    arari:null,   ritsu:null },
+      { name:"岩田商会",                       shiire:16874,   hanbai:24560,   arari:2929,   ritsu:11.93 },
+      { name:"ウォールボンド工業",             shiire:16539,   hanbai:20211,   arari:3553,   ritsu:17.58 },
+      { name:"ピーアイエー",                   shiire:16363,   hanbai:18051,   arari:4220,   ritsu:23.38 },
+      { name:"日本化成",                       shiire:15311,   hanbai:31948,   arari:6356,   ritsu:19.90 },
+      { name:"トラスコ中山",                   shiire:14977,   hanbai:593,     arari:118,    ritsu:19.97 },
+      { name:"エス・ワイ・エム",               shiire:14956,   hanbai:21661,   arari:6884,   ritsu:31.78 },
+      { name:"アイベック",                     shiire:14817,   hanbai:null,    arari:null,   ritsu:null },
+      { name:"日建総業",                       shiire:13306,   hanbai:16639,   arari:3223,   ritsu:19.37 },
+      { name:"大建化学",                       shiire:13042,   hanbai:10314,   arari:2281,   ritsu:22.11 },
+      { name:"大関化学工業",                   shiire:13025,   hanbai:14267,   arari:1403,   ritsu:9.83 },
+      { name:"松永トイシ",                     shiire:12940,   hanbai:13423,   arari:3338,   ritsu:24.87 },
+    ],
+    totalLabel: "掲載仕入先 合計",
+  },
+
+  insights: [
+    { title:"上位に集中する接着剤メーカー", points:[
+      "<b>上位3社（アイカ・コニシ・セメダイン）で総仕入額の約47%</b>（2,859,578千円）を占める。",
+      "いずれも接着剤メーカーの中核仕入先。粗利率は<b>12〜16%</b>で安定。",
+    ]},
+    { title:"高粗利の準大手", points:[
+      "<b>ヤヨイ化学19.9%・コマックス21.4%・APMジャパン27.0%・シンコー23.5%</b>。",
+      "規模はやや小さいが収益性が高く、拡販余地の検討候補。",
+    ]},
+    { title:"大口・薄利の取引", points:[
+      "<b>積水マテリアル5.6%・積水フーラー3.1%・新邦工業1.8%・王子コンテナー2.0%</b>。",
+      "荷姿・容器・OEM系の低マージン取引。価格・条件の見直し余地。",
+    ]},
+  ],
+
+  notes: [
+    "対象は会計年月 202504〜202603。金額はすべて税抜・千円単位（四捨五入）。粗利率＝粗利÷販売額。",
+    "「仕入額」は仕入伝票の実績（実際にその仕入先から仕入れた額）。",
+    "「販売額・粗利」は、その仕入先が商品マスタで『主要仕入先』に設定されている商品の売上実績を集計。仕入と販売でキーが異なるため、両者は必ずしも一致しない。",
+    "販売欄が「―」または極端に小さい先（立川ブラインド・エスパッケージ・野口興産・マキタ等）は、仕入はあるが該当商品の主要仕入先が別会社に登録されているケース。上位の主要メーカーは両者がよく一致し、粗利率は信頼できる。",
+    "販売額の主要仕入先への紐付けカバー率は総販売額の約90.5%。★はグループ会社（グループ内取引）。",
+    "データ出所：OBIC7 基幹システム（Obic7UZZBusiness_100）。",
+  ],
+};
+/* ▲▲▲ 書き換えはここまで ▲▲▲ */
+
+
+/* ========================= 描画エンジン（触らなくてOK） ===================== */
+const $ = id => document.getElementById(id);
+const nf = new Intl.NumberFormat('ja-JP');
+const fmtNum = v => (v===null||v===undefined||v==='') ? null : nf.format(Math.round(v));
+const fmtPct = v => (v===null||v===undefined||v==='') ? null : Number(v).toFixed(2);
+
+function fillText(){
+  document.title = `${REPORT_DATA.company}｜${REPORT_DATA.reportTitle}`;
+  $('b-company').innerHTML = REPORT_DATA.company +
+    (REPORT_DATA.companyNote ? `<small>${REPORT_DATA.companyNote}</small>` : '');
+  const cls = REPORT_DATA.classification;
+  if(cls){ $('m-class').textContent = cls; } else { $('m-class').style.display='none'; }
+  $('m-period').innerHTML = `対象期間：<b>${REPORT_DATA.period}</b>`;
+  $('m-prepared').innerHTML = `${REPORT_DATA.preparedBy||''}${REPORT_DATA.preparedBy?'／':''}作成日 ${REPORT_DATA.date||''}`;
+  $('r-title').textContent = REPORT_DATA.reportTitle;
+  $('r-sub').textContent = REPORT_DATA.period;
+  $('t-table').textContent = REPORT_DATA.table.title || '明細';
+  $('f-left').textContent =
+    `${REPORT_DATA.company}　経営分析レポート　│　${REPORT_DATA.period}${cls?'　│　'+cls:''}`;
+}
+
+function renderKPI(){
+  $('kpi-grid').innerHTML = REPORT_DATA.summary.map(k=>{
+    const val = k.type==='percent' ? fmtPct(k.value) : fmtNum(k.value);
+    const sub = k.sub ? `<div class="sub ${k.tone||''}">${k.sub}</div>` : '';
+    return `<div class="kpi"><div class="label">${k.label}</div>
+      <div class="val">${val ?? '―'}<span class="unit">${k.unit||''}</span></div>${sub}</div>`;
+  }).join('');
+}
+
+/* ---- テーブル ---- */
+const T = REPORT_DATA.table;
+let sortKey = T.rankBy, sortDir = -1;   // -1:降順
+
+// 初期ランク（rankBy 降順）を固定付与
+[...T.rows]
+  .sort((a,b)=>(b[T.rankBy]??-Infinity)-(a[T.rankBy]??-Infinity))
+  .forEach((r,i)=>r._rank=i+1);
+
+function barMax(){
+  const col = T.columns.find(c=>c.bar);
+  if(!col) return {key:null,max:0};
+  const max = Math.max(...T.rows.map(r=>Number(r[col.key])||0));
+  return {key:col.key,max};
+}
+
+function renderHead(){
+  $('thead-row').innerHTML =
+    `<th class="rank">#</th>` +
+    T.columns.map(c=>{
+      const cls = c.type==='text' ? 'text' : '';
+      const sorted = c.key===sortKey ? 'sorted' : '';
+      const arrow = c.key===sortKey ? (sortDir<0?'▼':'▲') : '';
+      const u = c.unit ? `<span class="u">（${c.unit}）</span>` : '';
+      return `<th class="${cls} ${sorted}" data-key="${c.key}">${c.label}${u}<span class="arrow">${arrow}</span></th>`;
+    }).join('');
+  document.querySelectorAll('thead th[data-key]').forEach(th=>{
+    th.onclick=()=>{
+      const k=th.dataset.key;
+      if(k===sortKey){ sortDir*=-1; } else { sortKey=k; sortDir=-1; }
+      renderHead(); renderBody();
+    };
+  });
+}
+
+function renderBody(){
+  const q = ($('filter').value||'').trim().toLowerCase();
+  const {key:bKey,max:bMax} = barMax();
+  let rows = T.rows.filter(r=> !q || String(r.name).toLowerCase().includes(q));
+  rows.sort((a,b)=>{
+    const col=T.columns.find(c=>c.key===sortKey);
+    let va=a[sortKey], vb=b[sortKey];
+    if(col && col.type==='text'){ return String(va).localeCompare(String(vb),'ja')*sortDir; }
+    va = (va===null||va===undefined) ? -Infinity : va;
+    vb = (vb===null||vb===undefined) ? -Infinity : vb;
+    return (va-vb)*sortDir;
+  });
+
+  $('tbody').innerHTML = rows.map(r=>{
+    const tds = T.columns.map(c=>{
+      if(c.type==='text'){
+        const badge = r.group ? `<span class="badge">G</span>` : '';
+        return `<td class="text"><div class="name-cell">${badge}<span class="nm">${r[c.key]}</span></div></td>`;
+      }
+      const raw = r[c.key];
+      const disp = c.type==='percent' ? fmtPct(raw) : fmtNum(raw);
+      if(disp===null) return `<td class="dash">―</td>`;
+      if(c.bar && c.key===bKey && bMax>0){
+        const w = Math.max(0,(Number(raw)/bMax)*100);
+        return `<td class="barcell"><span class="fill" style="width:${w}%"></span><span class="v">${disp}</span></td>`;
+      }
+      return `<td>${disp}</td>`;
+    }).join('');
+    return `<tr class="${r.group?'is-group':''}"><td class="rank">${r._rank}</td>${tds}</tr>`;
+  }).join('');
+}
+
+function renderFoot(){
+  const sums={};
+  T.columns.forEach(c=>{
+    if(c.total==='sum'){
+      sums[c.key]=T.rows.reduce((s,r)=>s+(Number(r[c.key])||0),0);
+    }
+  });
+  const cells = T.columns.map((c,i)=>{
+    if(i===0) return `<td class="text">${T.totalLabel||'合計'}</td>`;
+    if(c.total==='sum') return `<td>${fmtNum(sums[c.key])}</td>`;
+    if(Array.isArray(c.total)){
+      const num=T.rows.reduce((s,r)=>s+(Number(r[c.total[0]])||0),0);
+      const den=T.rows.reduce((s,r)=>s+(Number(r[c.total[1]])||0),0);
+      return `<td>${den?fmtPct(num/den*100):'―'}</td>`;
+    }
+    return `<td></td>`;
+  }).join('');
+  $('tfoot').innerHTML = `<tr><td class="rank"></td>${cells}</tr>`;
+}
+
+function renderInsights(){
+  $('insights').innerHTML = (REPORT_DATA.insights||[]).map(g=>
+    `<div class="insight"><h3>${g.title}</h3><ul>${
+      (g.points||[]).map(p=>`<li>${p}</li>`).join('')
+    }</ul></div>`).join('');
+  if(!REPORT_DATA.insights?.length) $('sec-insights').style.display='none';
+}
+
+function renderNotes(){
+  $('notes').innerHTML = (REPORT_DATA.notes||[]).map(n=>`<li>${n}</li>`).join('');
+  if(!REPORT_DATA.notes?.length) $('sec-notes').style.display='none';
+}
+
+function build(){
+  fillText(); renderKPI(); renderHead(); renderBody(); renderFoot(); renderInsights(); renderNotes();
+  $('filter').addEventListener('input', renderBody);
+}
+build();
+</script>
+</body>
+</html>
