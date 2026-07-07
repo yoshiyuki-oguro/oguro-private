@@ -30,7 +30,7 @@
     position:relative; flex-shrink:0; }
   /* 裏面共通 */
   .card-back { background:var(--warm-white); display:grid;
-    grid-template-columns:1fr auto; grid-template-rows:1fr auto;
+    grid-template-columns:1fr; grid-template-rows:1fr auto;
     padding:30px 34px 30px 42px; position:relative; }
   .card-back::before { content:''; position:absolute; left:0; top:0; bottom:0;
     width:5px; background:var(--brand); border-radius:7px 0 0 7px; }
@@ -43,8 +43,7 @@
     color:var(--ink); letter-spacing:.04em; font-variant-numeric:tabular-nums; line-height:1; }
   .ct-label { font-size:13px; letter-spacing:.2em; color:var(--muted);
     text-transform:uppercase; width:32px; flex-shrink:0; }
-  .logo-small-wrap { grid-column:2; grid-row:1/3; display:flex;
-    align-items:center; justify-content:flex-end; padding-left:16px; }
+  .logo-small-wrap { position:absolute; right:80px; top:55px; display:flex; }
   .logo-small-wrap img { width:70px; height:70px; display:block; opacity:.88; }
   .note { font-size:10.5px; color:var(--muted); letter-spacing:.1em; text-align:center; }
 
