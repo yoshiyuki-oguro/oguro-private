@@ -1,0 +1,770 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2026/06/12　1st</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="37cb3f1a-b866-8054-aa16-d9a41e6c7306" class="page sans"><header><h1 class="page-title" dir="auto">2026/06/12　1st</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>タグ</th><td></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>作成日時</th><td><time datetime="2026-06-12T07:51">2026年6月12日 7:51</time></td></tr></tbody></table></header><div class="page-body"><h3 id="37cb3f1a-b866-80dc-a589-efd0eb9af18b" class="" dir="auto">リーダーとは？</h3><hr id="37cb3f1a-b866-8063-b123-c7668723db98" dir="auto"/><p id="37cb3f1a-b866-8003-8641-c0ab73011921" class="" dir="auto">覚悟</p><p id="37cb3f1a-b866-8029-ad64-d806c6083229" class="" dir="auto">指揮官先頭</p><p id="37cb3f1a-b866-80f9-a7f4-f73b9c89e486" class="" dir="auto">
+</p><p id="37cb3f1a-b866-8090-b9b6-d7c3f95d9559" class="" dir="auto">
+</p><h3 id="37cb3f1a-b866-80c2-84c0-d74f35dba6c2" class="" dir="auto">社長になってから</h3><hr id="37cb3f1a-b866-80ab-a391-f43f855a0208" dir="auto"/><ul id="37cb3f1a-b866-8029-8f81-e42f47a2ea7b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">社長になる前は（なってからも少しは、、、）逃げてばかり、評論家</li></ul><ul id="37cb3f1a-b866-80a1-b018-c352f6aaa852" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2015年3月：社長になる直前に、ようやく社長になったあとのことを考える<ul id="37cb3f1a-b866-8001-9cce-dc800be3ad23" class="bulleted-list" dir="auto"><li style="list-style-type:circle">仲が悪く、嫌いだった土屋さんに常務になってもらった</li></ul><p id="37db3f1a-b866-80a0-bfca-c2aaac759a87" class="" dir="auto">　　→好き嫌いではない、良い仕事をするために</p></li></ul><ul id="37cb3f1a-b866-80f0-9bc1-d172f7fba977" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2015年夏：社長になってからの自覚<ul id="37cb3f1a-b866-8058-b2de-e5cf727077ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle">こんな情けないことを考えている社長では社員の皆さんがかわいそう</li></ul></li></ul><ul id="37cb3f1a-b866-804b-ab3a-e09fe478a0f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2017年：小宮さん「ドローンが商品を運んだら君の会社はいらない」から会社の将来を考える<ul id="37db3f1a-b866-80d6-922e-f6165d1bde4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">我々の価値は何だろうか？</li></ul><ul id="37cb3f1a-b866-8044-a9ae-c18b0a205908" class="bulleted-list" dir="auto"><li style="list-style-type:circle">発注者と仕事をしなくては　→　今の我々の顧客は材料を選定することができない</li></ul></li></ul><ul id="37cb3f1a-b866-8086-954a-f21d2a6f8e6b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2018年2月：強く願うことによるFCIとの出会い　→2018年8月1日ゴールイン</li></ul><ul id="37cb3f1a-b866-8017-b750-dc8fae614182" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2018年冬：そろそろグループシナジー　→　資材供給<ul id="37cb3f1a-b866-8022-9ec1-fb9781fb2b93" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ただしやったことがないことをやることの難しさを知る<p id="37db3f1a-b866-80d6-a3a5-cea3e42b9d18" class="" dir="auto">→ただの価格競争：発注者にとってもメーカーにとっても価値がない</p></li></ul></li></ul><ul id="37cb3f1a-b866-80d0-8bc1-e6cbdc470df5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2020年3月：服部さんとの出会い　→2021年12月ゴールイン</li></ul><ul id="37cb3f1a-b866-8094-99e2-f8a304561f2a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2021年2月：経営者の信念のなさ<ul id="37cb3f1a-b866-805c-81bf-f92a6b267462" class="bulleted-list" dir="auto"><li style="list-style-type:circle">新宅さんから「社長がゆるぎない信念、グループ・会社のミッションを社員の方に熱く語れないようではグループがうまく行くはずがない」と私の信念の弱さを強く指摘されたときから始まった。</li></ul></li></ul><ul id="37cb3f1a-b866-80e1-9c8a-eca62c4c1073" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2021年4月：第三創業期をスタートさせよう<ul id="37cb3f1a-b866-802f-90b0-ce3360694584" class="bulleted-list" dir="auto"><li style="list-style-type:circle">新しい価値を生み出す必要性</li></ul><ul id="37cb3f1a-b866-8009-8a3b-ea578d37cd38" class="bulleted-list" dir="auto"><li style="list-style-type:circle">経営理念を釘を打ちたくないに変更　→自分たちのミッションを確立できた</li></ul></li></ul><ul id="37cb3f1a-b866-8014-9214-f71f5f7cf023" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2021年4月：KC経営塾αスタート</li></ul><ul id="37db3f1a-b866-806e-a9a4-e191973d2580" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2021年8月7日：天知さんとの出会い</li></ul><figure id="37db3f1a-b866-8030-a0f8-ff470c8a5048" class="image" data-notion-image="image.png" dir="ltr"><a href="image.png"><img style="width:777px" src="image.png"/></a></figure><ul id="37cb3f1a-b866-8030-a177-cfd9ac0b49a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2022年4月：10年ビジョン連結売上高1000億円を発表<ul id="37db3f1a-b866-80a1-9bbc-ed8e7cf4322e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ここまで来たら、、、大きな目標　→10年後売上高1000億円（まだbeyond1000ではない）</li></ul><ul id="37db3f1a-b866-8060-8df5-e2527eef8aae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ただし、1000億円とは実際どのような景色なのだろうか？</li></ul><ul id="37db3f1a-b866-80b1-8d47-f4c284a0f606" class="bulleted-list" dir="auto"><li style="list-style-type:circle">実際に自身でその大きな山を登った人に会いたい。</li></ul><ul id="37db3f1a-b866-80e7-8ff1-ce2717f23bba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「企業は社長の器以上にならない」<ul id="37db3f1a-b866-8062-8413-c5a81d72d656" class="bulleted-list" dir="auto"><li style="list-style-type:square">誰かが、ではなく自分の器を自分で広げなくてはいけない</li></ul><ul id="37db3f1a-b866-8005-8667-efd058a37d6f" class="bulleted-list" dir="auto"><li style="list-style-type:square">自分の器以上の人に積極的に会う　→角田雄二さん、天知さん、故前原さん、小宮さん</li></ul></li></ul></li></ul><ul id="37db3f1a-b866-80d7-9dc1-e8117f89a47e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2023年2月13日：日本スターバックス創業者　角田雄二さんと初会食<ul id="37db3f1a-b866-800a-a55a-dc0388eb280a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">自身が実際にやってきたこと、その時々の熱い想いを語っていただく</li></ul></li></ul><ul id="37cb3f1a-b866-80f2-817c-c4c32836189b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2022年夏ごろ：服部さんの言葉<ul id="37cb3f1a-b866-807c-9ca3-efe7b58d509d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">今までと同じことをやるだけだったら来た意味がない</li></ul><ul id="37cb3f1a-b866-8082-af9b-e64c5496f56f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">では何をすることによって発注者に今までにないサービスができるのか？</li></ul></li></ul><ul id="37db3f1a-b866-8006-af02-c19f02290022" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2022年8月：究極の合宿<p id="37cb3f1a-b866-8074-a87b-e2743c420f9b" class="" dir="auto">　　→　当社グループの強み＝色々な立場を経験した人がいる（発注者、メーカー、物流、接着剤専門商社、など）<div class="indented"><figure id="37cb3f1a-b866-8098-a4d0-c7e07516e413" class="image" data-notion-image="image%201.png" dir="ltr"><a href="image%201.png"><img style="width:739px" src="image%201.png"/></a></figure></div></p><figure id="37cb3f1a-b866-8081-874c-fa9c4622ea82" class="image" data-notion-image="image%202.png" dir="ltr"><a href="image%202.png"><img style="width:651px" src="image%202.png"/></a></figure><figure id="37cb3f1a-b866-800e-861b-fc74406de28c" class="image" data-notion-image="image%203.png" dir="ltr"><a href="image%203.png"><img style="width:670.984375px" src="image%203.png"/></a></figure></li></ul><ul id="37cb3f1a-b866-804d-b05c-e9dbf8223928" class="bulleted-list" dir="auto"><li style="list-style-type:disc">この合宿後、日本一のマクドナルドさんにいつかこの究極の円を活用してみせる！<ul id="37cb3f1a-b866-80f4-8600-e97f79570608" class="bulleted-list" dir="auto"><li style="list-style-type:circle">2023年夏：プランニングピープルとの出会い　→2024年4月ゴールイン</li></ul><ul id="37db3f1a-b866-80c3-922b-e33d45c44598" class="bulleted-list" dir="auto"><li style="list-style-type:circle">2025年6月18日：M社水品本部長と初面談</li></ul><ul id="37db3f1a-b866-804d-b24f-d2a63629e207" class="bulleted-list" dir="auto"><li style="list-style-type:circle">2025年7月16日：M社さんチームに究極の円をプレゼン</li></ul><ul id="37db3f1a-b866-8014-bc08-e4e3e7001b05" class="bulleted-list" dir="auto"><li style="list-style-type:circle">2026年1月13日：本部長より「諸々ご相談」メールをいただく<figure id="37db3f1a-b866-8016-9cc1-c1c8ab2d9308" class="image" data-notion-image="image%204.png" dir="ltr"><a href="image%204.png"><img style="width:738.96875px" src="image%204.png"/></a></figure><ul id="37db3f1a-b866-80a0-a692-c65f40d1d55b" class="bulleted-list" dir="auto"><li style="list-style-type:square">2026年1月20日：本部長と面談　→2030年に向けたM社のビジョン、トップの本気</li></ul></li></ul><ul id="37db3f1a-b866-8076-83d1-da9b4b4a3f28" class="bulleted-list" dir="auto"><li style="list-style-type:circle">2026年2月27日：上記を受けて取り組みをプレゼン</li></ul></li></ul><ul id="37db3f1a-b866-804d-be49-d1fee61ca72f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2023年5月25日：天知さんへのお願い<ul id="37db3f1a-b866-80ef-87a3-f8b44cf2f98f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">大きなビジョンは立てたが、自分たちが正しい道を歩むことができるかという不安</li></ul><ul id="37db3f1a-b866-8033-902e-eb6605afdbc2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">私の羅針盤になっていただきたい　→2024年7月1日ゴールイン</li></ul></li></ul><ul id="37cb3f1a-b866-809b-9eb5-deb2d7cf314b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2025年4月：10年ビジョンのリスタート「beyond1000」を発表<ul id="37cb3f1a-b866-80dc-8021-c37d1ba8ea26" class="bulleted-list" dir="auto"><li style="list-style-type:circle">新人事制度、人財育成、3年で色々やったが急ぎすぎた</li></ul></li></ul><ul id="37db3f1a-b866-80a4-9aee-dc903d22b2ea" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2025年4月：カテゴリ戦略を発表<ul id="37db3f1a-b866-804b-a221-d61bf5390191" class="bulleted-list" dir="auto"><li style="list-style-type:circle">10年後がただの数値目標となっており「どのように」がなかった</li></ul></li></ul><ul id="37db3f1a-b866-8026-a329-e352a9875792" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2026年4月：bondexを発表<ul id="37db3f1a-b866-80b5-a426-cbe3fd9df3d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">単一機能の提供ではなく、世の中に無い商品・サービスを生み出すためのプラットフォーム企業になる。</li></ul></li></ul><ul id="37db3f1a-b866-804d-bad4-fe5e67cb6d32" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2026年4月：bondex αスタート<ul id="37db3f1a-b866-80e8-9c14-cd8fcfbb5bea" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ビジョナリーカンパニーになるために</li></ul></li></ul><p id="37cb3f1a-b866-803f-a97a-cd2e0256240f" class="" dir="auto">
+</p><h3 id="37cb3f1a-b866-80b7-9716-f5d49d0af45d" class="" dir="auto">いずれにしろ</h3><ul id="37cb3f1a-b866-801d-9d93-d0607d78d354" class="bulleted-list" dir="auto"><li style="list-style-type:disc">覚悟がない、逃げるリーダーについてくる人はいない<ul id="37cb3f1a-b866-80eb-a5b2-f1dbafa6eb52" class="bulleted-list" dir="auto"><li style="list-style-type:circle">これは弱さを見せてはいけないとは違う</li></ul></li></ul><ul id="37cb3f1a-b866-808f-9632-ec1e67312c91" class="bulleted-list" dir="auto"><li style="list-style-type:disc">覚悟があれば自分の弱みを見せることになんら抵抗はない<ul id="37cb3f1a-b866-80e9-b32d-e4b28a9934be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「自分」などどうでもいいから。お客様のため、社員のためがすべてになるから</li></ul></li></ul><ul id="37cb3f1a-b866-80b0-b92c-f9361296bf08" class="bulleted-list" dir="auto"><li style="list-style-type:disc">志を高め、覚悟を決めれば<ul id="37cb3f1a-b866-801f-8c74-cfae819d4941" class="bulleted-list" dir="auto"><li style="list-style-type:circle">すべてが自分事となる</li></ul><ul id="37cb3f1a-b866-8019-ae76-f0c6d199a731" class="bulleted-list" dir="auto"><li style="list-style-type:circle">できない理由、他への批判などしている暇はない</li></ul><ul id="37cb3f1a-b866-80da-8943-e34fb1f98cdc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">カッコつけている暇もない</li></ul></li></ul><ul id="37db3f1a-b866-80d1-b496-c73aea9214f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">そのうえで、自身が「なれる最高の自分」を目指し自ら器を広げることを日々目指さなくてはいけない</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
