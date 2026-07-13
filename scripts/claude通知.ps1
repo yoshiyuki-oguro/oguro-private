@@ -1,24 +1,23 @@
-# Claude Code Notification フック用スクリプト
-# 標準入力でフックのJSON（message フィールド）を受け取り、Windowsのトースト通知＋音で知らせる。
-# 呼び出し例: powershell.exe -ExecutionPolicy Bypass -File "claude通知.ps1"
+# Claude Code Notification hook script
+# ASCII-only on purpose: Windows PowerShell 5.1 reads .ps1 as the system codepage
+# (Shift-JIS on Japanese Windows), so any non-ASCII text here would be corrupted and
+# break parsing. Keep this file 100% ASCII.
+#
+# Reads the hook JSON (message field) from stdin and shows a Windows toast + sound.
+# Called like: powershell.exe -NoProfile -File "claude通知.ps1"
 
 $ErrorActionPreference = "SilentlyContinue"
 
-# 標準入力からフックのJSONを読む
+# Read hook JSON from stdin
 $raw = [Console]::In.ReadToEnd()
 $msg = ""
-try {
-    if ($raw) { $msg = ([string]([System.Text.Json.JsonDocument]::Parse($raw).RootElement.GetProperty("message").GetString())) }
-} catch {
-    # JsonDocument が使えない環境向けフォールバック
-    try { $msg = ($raw | ConvertFrom-Json).message } catch { $msg = "" }
-}
-if (-not $msg) { $msg = "Claude Code が入力を待っています" }
+try { $msg = ($raw | ConvertFrom-Json).message } catch { $msg = "" }
+if (-not $msg) { $msg = "Claude Code needs your attention" }
 
-# 音（アテンション用のシステム音）
+# Attention sound
 [System.Media.SystemSounds]::Exclamation.Play()
 
-# バルーン/トースト通知（Windows 11 ではトーストとして表示される）
+# Balloon / toast notification (shown as a toast on Windows 11)
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 $notify = New-Object System.Windows.Forms.NotifyIcon
