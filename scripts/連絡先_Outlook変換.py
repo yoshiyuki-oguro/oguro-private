@@ -15,6 +15,7 @@ HEADERS = [
     "Yomi First Name","Yomi Last Name","Yomi Company Name",
     "Title","Suffix","Nickname",
     "Company","Department","Job Title",
+    "File As",
     "E-mail Address","E-mail 2 Address","E-mail 3 Address",
     "Mobile Phone","Business Phone","Home Phone","Other Phone",
     "Business Street","Birthday","Categories","Notes",
@@ -52,10 +53,14 @@ for r in rows:
     rec = {h: "" for h in HEADERS}
     rec["Last Name"]  = r.get("姓","").strip()
     rec["First Name"] = r.get("名","").strip()
-    rec["Yomi Last Name"] = r.get("姓フリガナ","").strip()
+    rec["Yomi Last Name"]  = r.get("姓フリガナ","").strip()
+    rec["Yomi First Name"] = r.get("名フリガナ","").strip()
     rec["Company"]    = r.get("会社名","").strip()
     rec["Job Title"]  = r.get("役職","").strip()
     rec["Nickname"]   = r.get("ニックネーム","").strip()
+    # 登録名(File As): 「会社名 姓名」→ Outlookで会社ごとにまとまり、中は姓順に並ぶ
+    person = (rec["Last Name"] + rec["First Name"]).strip()
+    rec["File As"] = " ".join(x for x in [rec["Company"], person] if x).strip()
     rec["E-mail Address"]   = r.get("メール1","").strip()
     rec["E-mail 2 Address"] = r.get("メール2","").strip()
     rec["E-mail 3 Address"] = r.get("メール3","").strip()
