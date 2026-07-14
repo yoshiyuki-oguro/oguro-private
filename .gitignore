@@ -16,3 +16,6 @@ Thumbs.db
 
 # Claude Code (個人ローカル設定 — チームには配布しない)
 .claude/settings.local.json
+
+# 連絡先データ（個人情報 — リモートに上げない。ローカル保管のみ）
+project/連絡先/
